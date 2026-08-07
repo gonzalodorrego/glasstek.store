@@ -179,7 +179,7 @@ nav a:hover::after{width:100%;}
 
 /* ================= HERO ================= */
 .hero{
-  position:relative;min-height:100vh;display:flex;align-items:flex-end;
+  position:relative;min-height:100vh;
   color:#fff;overflow:hidden;
 }
 .hero-media{position:absolute;inset:0;z-index:0;}
@@ -189,45 +189,58 @@ nav a:hover::after{width:100%;}
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg, rgba(6,8,10,0.35) 0%, rgba(6,8,10,0.35) 40%, rgba(6,8,10,0.92) 100%);
 }
+
+/* Eyebrow: fuera y arriba del marco */
+.hero-eyebrow-top{position:absolute;top:118px;left:0;right:0;z-index:2;padding:0 32px;max-width:1240px;margin:0 auto;}
+.hero-eyebrow-top.eyebrow{color:var(--silver-light);}
+.hero-eyebrow-top.eyebrow::before{background:var(--silver-light);}
+
+/* Marco: encierra el resto del contenido */
 .hero-frame{
-  position:absolute;top:26px;left:26px;right:26px;bottom:26px;
-  border:1px solid rgba(255,255,255,0.16);border-top:none;
+  position:absolute;top:172px;left:26px;right:26px;bottom:26px;
+  border:1px solid rgba(255,255,255,0.16);
   pointer-events:none;z-index:1;
 }
-.hero-frame::before,.hero-frame::after,.hero-corner-b1,.hero-corner-b2{content:"";position:absolute;width:22px;height:22px;}
-.corner{position:absolute;width:26px;height:26px;border:1.5px solid rgba(255,255,255,0.85);z-index:2;}
-.corner.tl{top:26px;left:26px;border-right:none;border-bottom:none;display:none;}
-.corner.tr{top:26px;right:26px;border-left:none;border-bottom:none;display:none;}
-.corner.bl{bottom:26px;left:26px;border-right:none;border-top:none;}
-.corner.br{bottom:26px;right:26px;border-left:none;border-top:none;}
 @media(max-width:760px){
-  .hero-frame,.corner{display:none;}
+  .hero-frame{display:none;}
 }
 
-.hero-content{position:relative;z-index:2;width:100%;padding:0 0 60px;}
-.hero-inner{max-width:760px;}
-.hero-content .eyebrow{color:var(--silver-light);}
-.hero-content .eyebrow::before{background:var(--silver-light);}
+/* Contenido, todo adentro del marco */
+.hero-framed-content{
+  position:absolute;top:172px;left:26px;right:26px;bottom:26px;z-index:2;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:40px 0 34px;
+}
+.hero-top-group{
+  max-width:1240px;margin:0 auto;width:100%;padding:0 32px;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:40px;
+}
+.hero-content{position:relative;width:100%;}
+.hero-inner{max-width:640px;}
 .hero-content h1{
-  font-size:clamp(40px,6.4vw,78px);line-height:1.03;color:#fff;font-weight:600;
+  font-size:clamp(38px,5.6vw,68px);line-height:1.05;color:#fff;font-weight:600;
   letter-spacing:-0.03em;
 }
 .hero-content h1 em{font-style:normal;color:var(--silver-light);}
 .hero-content .sub{
-  margin-top:26px;font-size:18px;font-weight:300;color:rgba(255,255,255,0.82);max-width:520px;
+  margin-top:24px;font-size:17px;font-weight:300;color:rgba(255,255,255,0.82);max-width:480px;
 }
-.hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;}
 
 .hero-specs{
-  position:absolute;right:32px;bottom:92px;z-index:2;
-  display:flex;flex-direction:column;gap:16px;
+  flex:none;display:flex;flex-direction:column;gap:16px;margin-top:6px;
   font-family:var(--font-mono);color:rgba(255,255,255,0.72);font-size:12px;text-align:right;
 }
 .hero-specs div span{display:block;color:#fff;font-size:22px;font-family:var(--font-display);font-weight:600;}
 @media(max-width:900px){.hero-specs{display:none;}}
 
+.hero-bottom-group{
+  max-width:1240px;margin:0 auto;width:100%;padding:0 32px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:22px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+
 .scroll-hint{
-  position:absolute;left:32px;bottom:36px;z-index:2;display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;gap:10px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);text-transform:uppercase;
 }
 .scroll-line{width:1px;height:34px;background:linear-gradient(180deg,rgba(255,255,255,0.7),transparent);position:relative;overflow:hidden;}
@@ -500,7 +513,7 @@ nav a:hover::after{width:100%;}
 
 /* WhatsApp floating button */
 .wa-float{
-  position:fixed;right:26px;bottom:26px;z-index:900;
+  position:fixed;right:40px;bottom:40px;z-index:900;
   width:60px;height:60px;border-radius:50%;background:#1c2b23;color:#fff;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.35);
@@ -579,29 +592,39 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   <div class="hero-media">
     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop" alt="Vivienda moderna con amplios ventanales de aluminio de piso a techo">
   </div>
+
+  <!-- Fuera del marco -->
+  <p class="hero-eyebrow-top eyebrow">Fábrica de aberturas de aluminio</p>
+
+  <!-- Marco -->
   <div class="hero-frame"></div>
-  <span class="corner bl"></span><span class="corner br"></span>
 
-  <div class="hero-specs">
-    <div><span>+18</span>años fabricando</div>
-    <div><span>100%</span>a medida</div>
-    <div><span>10</span>años de garantía</div>
-  </div>
+  <!-- Contenido, adentro del marco -->
+  <div class="hero-framed-content">
+    <div class="hero-top-group">
+      <div class="hero-content container">
+        <div class="hero-inner">
+          <h1>Precisión industrial.<br>Diseño <em>que perdura.</em></h1>
+          <p class="sub">Fabricamos aberturas de aluminio de alta gama para viviendas y edificios que no se conforman con lo estándar. Cada perfil, calculado. Cada terminación, impecable.</p>
+        </div>
+      </div>
+      <div class="hero-specs">
+        <div><span>+18</span>años fabricando</div>
+        <div><span>100%</span>a medida</div>
+        <div><span>10</span>años de garantía</div>
+      </div>
+    </div>
 
-  <div class="hero-content container">
-    <div class="hero-inner">
-      <p class="eyebrow">Fábrica de aberturas de aluminio</p>
-      <h1>Precisión industrial.<br>Diseño <em>que perdura.</em></h1>
-      <p class="sub">Fabricamos aberturas de aluminio de alta gama para viviendas y edificios que no se conforman con lo estándar. Cada perfil, calculado. Cada terminación, impecable.</p>
+    <div class="hero-bottom-group container">
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
         <a href="#productos" class="btn btn-ghost">Ver productos</a>
       </div>
+      <div class="scroll-hint"><span class="scroll-line"></span>Descubrir</div>
     </div>
   </div>
-
-  <div class="scroll-hint"><span class="scroll-line"></span>Descubrir</div>
 </section>
+
 
 <!-- ================= TRUST STRIP ================= -->
 <div class="trust-strip">
