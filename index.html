@@ -191,19 +191,29 @@ nav a:hover::after{width:100%;}
 }
 
 /* Eyebrow: fuera y arriba del marco */
-.hero-eyebrow-top{position:absolute;top:118px;left:0;right:0;z-index:2;padding:0 32px;max-width:1240px;margin:0 auto;}
+.hero-eyebrow-top{position:relative;z-index:2;max-width:1240px;margin:118px auto 0;padding:0 32px;}
 .hero-eyebrow-top.eyebrow{color:var(--silver-light);}
 .hero-eyebrow-top.eyebrow::before{background:var(--silver-light);}
 
-/* Contenido, todo adentro del marco — el borde abraza el contenido real, sin altura fija */
+/* Contenido, todo adentro del marco — en flujo normal, así la sección siempre crece con él */
 .hero-framed-content{
-  position:absolute;top:172px;left:26px;right:26px;z-index:2;
-  border:1px solid rgba(255,255,255,0.16);
-  display:flex;flex-direction:column;gap:56px;
-  padding:40px 32px 34px;
+  position:relative;z-index:2;
+  margin:40px 26px 70px;
+  border:2px solid rgba(255,255,255,0.22);
+  display:flex;flex-direction:column;gap:28px;
+  padding:34px 32px 26px;
 }
 @media(max-width:760px){
-  .hero-framed-content{border:none;}
+  .hero-framed-content{border:none;margin-left:0;margin-right:0;}
+}
+/* Puntas del marco, más gruesas, ancladas a las esquinas reales del contenido */
+.corner-mark{position:absolute;width:28px;height:28px;border:2.5px solid rgba(255,255,255,0.9);pointer-events:none;}
+.corner-mark.tl{top:-2px;left:-2px;border-right:none;border-bottom:none;}
+.corner-mark.tr{top:-2px;right:-2px;border-left:none;border-bottom:none;}
+.corner-mark.bl{bottom:-2px;left:-2px;border-right:none;border-top:none;}
+.corner-mark.br{bottom:-2px;right:-2px;border-left:none;border-top:none;}
+@media(max-width:760px){
+  .corner-mark{display:none;}
 }
 .hero-top-group{
   max-width:1240px;margin:0 auto;width:100%;
@@ -212,24 +222,24 @@ nav a:hover::after{width:100%;}
 .hero-content{position:relative;width:100%;}
 .hero-inner{max-width:640px;}
 .hero-content h1{
-  font-size:clamp(38px,5.6vw,68px);line-height:1.05;color:#fff;font-weight:600;
+  font-size:clamp(34px,5vw,60px);line-height:1.05;color:#fff;font-weight:600;
   letter-spacing:-0.03em;
 }
 .hero-content h1 em{font-style:normal;color:var(--silver-light);}
 .hero-content .sub{
-  margin-top:24px;font-size:17px;font-weight:300;color:rgba(255,255,255,0.82);max-width:480px;
+  margin-top:18px;font-size:16px;font-weight:300;color:rgba(255,255,255,0.82);max-width:480px;
 }
 
 .hero-specs{
-  flex:none;display:flex;flex-direction:column;gap:16px;margin-top:6px;
+  flex:none;display:flex;flex-direction:column;gap:14px;margin-top:4px;
   font-family:var(--font-mono);color:rgba(255,255,255,0.72);font-size:12px;text-align:right;
 }
-.hero-specs div span{display:block;color:#fff;font-size:22px;font-family:var(--font-display);font-weight:600;}
+.hero-specs div span{display:block;color:#fff;font-size:20px;font-family:var(--font-display);font-weight:600;}
 @media(max-width:900px){.hero-specs{display:none;}}
 
 .hero-bottom-group{
   max-width:1240px;margin:0 auto;width:100%;
-  display:flex;flex-direction:column;align-items:flex-start;gap:22px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
 }
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
 
@@ -237,15 +247,23 @@ nav a:hover::after{width:100%;}
   display:flex;align-items:center;gap:10px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:rgba(255,255,255,0.6);text-transform:uppercase;
 }
-.scroll-line{width:1px;height:34px;background:linear-gradient(180deg,rgba(255,255,255,0.7),transparent);position:relative;overflow:hidden;}
-.scroll-line::after{content:"";position:absolute;left:0;top:-34px;width:1px;height:34px;background:#fff;animation:scrollMove 2.2s infinite ease-in-out;}
-@keyframes scrollMove{0%{top:-34px;}100%{top:34px;}}
+.scroll-line{width:1px;height:28px;background:linear-gradient(180deg,rgba(255,255,255,0.7),transparent);position:relative;overflow:hidden;}
+.scroll-line::after{content:"";position:absolute;left:0;top:-28px;width:1px;height:28px;background:#fff;animation:scrollMove 2.2s infinite ease-in-out;}
+@keyframes scrollMove{0%{top:-28px;}100%{top:28px;}}
 
 /* ================= LOGO STRIP ================= */
-.trust-strip{padding:34px 0;border-bottom:1px solid var(--line);}
-.trust-strip .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
-.trust-strip .item{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:#7a828c;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.trust-strip{padding:34px 0;border-bottom:1px solid var(--line);overflow:hidden;}
+.trust-track{display:flex;width:max-content;animation:trustScroll 26s linear infinite;}
+.trust-track-group{display:flex;flex-wrap:nowrap;align-items:center;gap:48px;padding-right:48px;}
+.trust-strip .item{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;color:#7a828c;text-transform:uppercase;display:flex;align-items:center;gap:8px;white-space:nowrap;}
 .trust-strip .item b{color:var(--graphite);font-weight:600;}
+@keyframes trustScroll{
+  from{transform:translateX(-50%);}
+  to{transform:translateX(0%);}
+}
+@media(prefers-reduced-motion: reduce){
+  .trust-track{animation:none;}
+}
 
 /* ================= QUIENES SOMOS ================= */
 .about{padding:150px 0;background:var(--white);}
@@ -592,6 +610,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
   <!-- Contenido, adentro del marco -->
   <div class="hero-framed-content">
+    <span class="corner-mark tl"></span><span class="corner-mark tr"></span><span class="corner-mark bl"></span><span class="corner-mark br"></span>
     <div class="hero-top-group">
       <div class="hero-content container">
         <div class="hero-inner">
@@ -619,12 +638,21 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
 <!-- ================= TRUST STRIP ================= -->
 <div class="trust-strip">
-  <div class="container">
-    <div class="item"><b>+18 años</b>&nbsp;de trayectoria</div>
-    <div class="item"><b>+4.500</b>&nbsp;aberturas fabricadas</div>
-    <div class="item"><b>Perfiles</b>&nbsp;línea premium</div>
-    <div class="item"><b>Fabricación</b>&nbsp;100% nacional</div>
-    <div class="item"><b>Instalación</b>&nbsp;con equipo propio</div>
+  <div class="trust-track">
+    <div class="trust-track-group">
+      <div class="item"><b>+18 años</b>&nbsp;de trayectoria</div>
+      <div class="item"><b>+4.500</b>&nbsp;aberturas fabricadas</div>
+      <div class="item"><b>Perfiles</b>&nbsp;línea premium</div>
+      <div class="item"><b>Fabricación</b>&nbsp;100% nacional</div>
+      <div class="item"><b>Instalación</b>&nbsp;con equipo propio</div>
+    </div>
+    <div class="trust-track-group" aria-hidden="true">
+      <div class="item"><b>+18 años</b>&nbsp;de trayectoria</div>
+      <div class="item"><b>+4.500</b>&nbsp;aberturas fabricadas</div>
+      <div class="item"><b>Perfiles</b>&nbsp;línea premium</div>
+      <div class="item"><b>Fabricación</b>&nbsp;100% nacional</div>
+      <div class="item"><b>Instalación</b>&nbsp;con equipo propio</div>
+    </div>
   </div>
 </div>
 
