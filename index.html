@@ -195,24 +195,18 @@ nav a:hover::after{width:100%;}
 .hero-eyebrow-top.eyebrow{color:var(--silver-light);}
 .hero-eyebrow-top.eyebrow::before{background:var(--silver-light);}
 
-/* Marco: encierra el resto del contenido */
-.hero-frame{
-  position:absolute;top:172px;left:26px;right:26px;bottom:26px;
+/* Contenido, todo adentro del marco — el borde abraza el contenido real, sin altura fija */
+.hero-framed-content{
+  position:absolute;top:172px;left:26px;right:26px;z-index:2;
   border:1px solid rgba(255,255,255,0.16);
-  pointer-events:none;z-index:1;
+  display:flex;flex-direction:column;gap:56px;
+  padding:40px 32px 34px;
 }
 @media(max-width:760px){
-  .hero-frame{display:none;}
-}
-
-/* Contenido, todo adentro del marco */
-.hero-framed-content{
-  position:absolute;top:172px;left:26px;right:26px;bottom:26px;z-index:2;
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:40px 0 34px;
+  .hero-framed-content{border:none;}
 }
 .hero-top-group{
-  max-width:1240px;margin:0 auto;width:100%;padding:0 32px;
+  max-width:1240px;margin:0 auto;width:100%;
   display:flex;justify-content:space-between;align-items:flex-start;gap:40px;
 }
 .hero-content{position:relative;width:100%;}
@@ -234,7 +228,7 @@ nav a:hover::after{width:100%;}
 @media(max-width:900px){.hero-specs{display:none;}}
 
 .hero-bottom-group{
-  max-width:1240px;margin:0 auto;width:100%;padding:0 32px;
+  max-width:1240px;margin:0 auto;width:100%;
   display:flex;flex-direction:column;align-items:flex-start;gap:22px;
 }
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
@@ -595,9 +589,6 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
   <!-- Fuera del marco -->
   <p class="hero-eyebrow-top eyebrow">Fábrica de aberturas de aluminio</p>
-
-  <!-- Marco -->
-  <div class="hero-frame"></div>
 
   <!-- Contenido, adentro del marco -->
   <div class="hero-framed-content">
