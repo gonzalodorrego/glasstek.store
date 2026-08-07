@@ -340,6 +340,18 @@ nav a:hover::after{width:100%;}
 @media(max-width:980px){.shop-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:620px){.shop-grid{grid-template-columns:1fr;}}
 
+/* ---- Teaser de tienda (en la landing) ---- */
+.shop-teaser{padding:130px 0;background:var(--bg-soft);}
+.shop-teaser-inner{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.shop-teaser-media{position:relative;overflow:hidden;}
+.shop-teaser-media img{width:100%;height:420px;object-fit:cover;}
+.shop-teaser-copy h2{font-size:clamp(28px,3.6vw,40px);line-height:1.15;margin-bottom:18px;}
+.shop-teaser-copy p{color:#565b63;font-size:16.5px;font-weight:300;margin-bottom:30px;max-width:440px;}
+@media(max-width:900px){
+  .shop-teaser-inner{grid-template-columns:1fr;gap:38px;}
+  .shop-teaser-media img{height:300px;}
+}
+
 /* ================= BENEFICIOS ================= */
 .benefits{padding:150px 0;background:var(--black);color:#fff;position:relative;}
 .benefits::before{
@@ -532,7 +544,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       <ul>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#productos">Productos</a></li>
-        <li><a href="#tienda">Tienda</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
         <li><a href="#beneficios">Beneficios</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#galeria">Galería</a></li>
@@ -540,7 +552,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </ul>
     </nav>
     <div class="header-actions">
-      <a href="#tienda" class="btn btn-primary btn-sm">Ir a la tienda</a>
+      <a href="tienda.html" class="btn btn-primary btn-sm">Ir a la tienda</a>
       <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -549,7 +561,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 <div class="mobile-nav" id="mobileNav">
   <a href="#nosotros">Nosotros</a>
   <a href="#productos">Productos</a>
-  <a href="#tienda">Tienda</a>
+  <a href="tienda.html">Tienda</a>
   <a href="#beneficios">Beneficios</a>
   <a href="#proceso">Proceso</a>
   <a href="#galeria">Galería</a>
@@ -749,155 +761,17 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   </div>
 </section>
 
-<!-- ================= TIENDA ================= -->
-<section class="shop" id="tienda">
-  <div class="container">
-    <div class="section-head reveal">
+<!-- ================= TIENDA (teaser) ================= -->
+<section class="shop-teaser" id="tienda">
+  <div class="container shop-teaser-inner">
+    <div class="shop-teaser-media">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop" alt="Ventanas de aluminio disponibles en la tienda online de Glasstek">
+    </div>
+    <div class="shop-teaser-copy">
       <p class="eyebrow">Tienda online</p>
       <h2>Comprá directo o pedí tu medida a medida</h2>
-      <p>Modelos en stock listos para llevar, con tamaños estándar y compra directa. Para proyectos con medidas especiales, armamos el presupuesto a partir de tus dimensiones.</p>
-    </div>
-
-    <div class="shop-tabs reveal">
-      <button class="shop-tab active" data-filter="all">Todos</button>
-      <button class="shop-tab" data-filter="stock">En stock — Compra directa</button>
-      <button class="shop-tab" data-filter="quote">A medida — Por encargue</button>
-    </div>
-
-    <div class="shop-grid show-all reveal" id="shopGrid">
-
-      <!-- ===== PRODUCTO EN STOCK 1 ===== -->
-      <article class="shop-card" data-type="stock">
-        <div class="shop-img">
-          <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=900&auto=format&fit=crop" alt="Ventana corrediza de aluminio en stock, línea A30">
-        </div>
-        <div class="shop-body">
-          <h3>Ventana corrediza — Línea A30</h3>
-          <p class="shop-desc">Aluminio anodizado, 2 hojas, vidrio DVH 4/9/4. Tamaños estándar listos para retirar o enviar.</p>
-          <div class="shop-field">
-            <label for="size-v1">Medida</label>
-            <select id="size-v1" class="stock-size" data-price-100x100="145000" data-price-120x120="168000" data-price-150x120="192000">
-              <option value="100x100">1,00 x 1,00 m</option>
-              <option value="120x120">1,20 x 1,20 m</option>
-              <option value="150x120">1,50 x 1,20 m</option>
-            </select>
-          </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$145.000</span></div>
-          <button class="btn btn-primary buy-now" data-product="Ventana corrediza — Línea A30" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
-          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
-        </div>
-      </article>
-
-      <!-- ===== PRODUCTO EN STOCK 2 ===== -->
-      <article class="shop-card" data-type="stock">
-        <div class="shop-img">
-          <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=900&auto=format&fit=crop" alt="Ventana oscilobatiente de PVC en stock">
-        </div>
-        <div class="shop-body">
-          <h3>Ventana oscilobatiente — PVC</h3>
-          <p class="shop-desc">Perfil PVC de 5 cámaras, doble sellado. Ideal para dormitorios y espacios con foco en aislación.</p>
-          <div class="shop-field">
-            <label for="size-v2">Medida</label>
-            <select id="size-v2" class="stock-size" data-price-60x60="72000" data-price-80x100="98000" data-price-100x120="126000">
-              <option value="60x60">0,60 x 0,60 m</option>
-              <option value="80x100">0,80 x 1,00 m</option>
-              <option value="100x120">1,00 x 1,20 m</option>
-            </select>
-          </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$72.000</span></div>
-          <button class="btn btn-primary buy-now" data-product="Ventana oscilobatiente — PVC" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
-          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
-        </div>
-      </article>
-
-      <!-- ===== PRODUCTO EN STOCK 3 ===== -->
-      <article class="shop-card" data-type="stock">
-        <div class="shop-img">
-          <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta ventana corrediza de aluminio en stock">
-        </div>
-        <div class="shop-body">
-          <h3>Puerta ventana corrediza</h3>
-          <p class="shop-desc">Aluminio línea A30, 2 hojas, apta para acceso a balcón o patio.</p>
-          <div class="shop-field">
-            <label for="size-v3">Medida</label>
-            <select id="size-v3" class="stock-size" data-price-150x200="238000" data-price-180x200="269000" data-price-200x200="298000">
-              <option value="150x200">1,50 x 2,00 m</option>
-              <option value="180x200">1,80 x 2,00 m</option>
-              <option value="200x200">2,00 x 2,00 m</option>
-            </select>
-          </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$238.000</span></div>
-          <button class="btn btn-primary buy-now" data-product="Puerta ventana corrediza" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
-          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
-        </div>
-      </article>
-
-      <!-- ===== A MEDIDA 1 ===== -->
-      <article class="shop-card" data-type="quote">
-        <div class="shop-img">
-          <span class="shop-badge quote">A medida</span>
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop" alt="Frente vidriado de aluminio fabricado a medida">
-        </div>
-        <div class="shop-body">
-          <h3>Frente vidriado a medida</h3>
-          <p class="shop-desc">Muro cortina y paños fijos de gran formato. Se fabrica según las medidas exactas de tu proyecto.</p>
-          <div class="shop-field">
-            <label>Medidas deseadas (metros)</label>
-            <div class="shop-dims">
-              <input type="number" step="0.01" min="0" class="dim-ancho" placeholder="Ancho" aria-label="Ancho en metros">
-              <input type="number" step="0.01" min="0" class="dim-alto" placeholder="Alto" aria-label="Alto en metros">
-            </div>
-          </div>
-          <button class="btn btn-primary quote-now" data-product="Frente vidriado a medida">Solicitar presupuesto</button>
-          <p class="shop-note">Te contactamos por WhatsApp con el presupuesto según tus medidas.</p>
-        </div>
-      </article>
-
-      <!-- ===== A MEDIDA 2 ===== -->
-      <article class="shop-card" data-type="quote">
-        <div class="shop-img">
-          <span class="shop-badge quote">A medida</span>
-          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=900&auto=format&fit=crop" alt="Cerramiento de balcón fabricado a medida">
-        </div>
-        <div class="shop-body">
-          <h3>Cerramiento de balcón a medida</h3>
-          <p class="shop-desc">Sumá metros útiles a tu balcón o galería. Fabricación según relevamiento de medidas.</p>
-          <div class="shop-field">
-            <label>Medidas deseadas (metros)</label>
-            <div class="shop-dims">
-              <input type="number" step="0.01" min="0" class="dim-ancho" placeholder="Ancho" aria-label="Ancho en metros">
-              <input type="number" step="0.01" min="0" class="dim-alto" placeholder="Alto" aria-label="Alto en metros">
-            </div>
-          </div>
-          <button class="btn btn-primary quote-now" data-product="Cerramiento de balcón a medida">Solicitar presupuesto</button>
-          <p class="shop-note">Te contactamos por WhatsApp con el presupuesto según tus medidas.</p>
-        </div>
-      </article>
-
-      <!-- ===== A MEDIDA 3 ===== -->
-      <article class="shop-card" data-type="quote">
-        <div class="shop-img">
-          <span class="shop-badge quote">A medida</span>
-          <img src="https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?q=80&w=900&auto=format&fit=crop" alt="Puerta de entrada de aluminio fabricada a medida">
-        </div>
-        <div class="shop-body">
-          <h3>Puerta de entrada a medida</h3>
-          <p class="shop-desc">Aberturas de alta seguridad con diseño personalizado, fabricadas según tu vano exacto.</p>
-          <div class="shop-field">
-            <label>Medidas deseadas (metros)</label>
-            <div class="shop-dims">
-              <input type="number" step="0.01" min="0" class="dim-ancho" placeholder="Ancho" aria-label="Ancho en metros">
-              <input type="number" step="0.01" min="0" class="dim-alto" placeholder="Alto" aria-label="Alto en metros">
-            </div>
-          </div>
-          <button class="btn btn-primary quote-now" data-product="Puerta de entrada a medida">Solicitar presupuesto</button>
-          <p class="shop-note">Te contactamos por WhatsApp con el presupuesto según tus medidas.</p>
-        </div>
-      </article>
-
+      <p>Modelos en stock con compra directa, o presupuesto por WhatsApp para proyectos a medida. Todo en una sección aparte, pensada para comprar rápido.</p>
+      <a href="tienda.html" class="btn btn-primary">Ir a la tienda</a>
     </div>
   </div>
 </section>
@@ -1192,7 +1066,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#productos">Productos</a></li>
-          <li><a href="#tienda">Tienda</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
           <li><a href="#beneficios">Beneficios</a></li>
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#galeria">Galería</a></li>
@@ -1307,69 +1181,6 @@ form.addEventListener('submit', (e)=>{
   formMsg.classList.add('show');
   form.reset();
   setTimeout(()=> formMsg.classList.remove('show'), 6000);
-});
-
-/* ===== TIENDA ===== */
-const WA_NUMBER = '5491169670130';
-
-// Filtros (Todos / En stock / A medida)
-const shopGrid = document.getElementById('shopGrid');
-document.querySelectorAll('.shop-tab').forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    document.querySelectorAll('.shop-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    shopGrid.classList.remove('show-all','show-stock','show-quote');
-    const f = tab.dataset.filter;
-    shopGrid.classList.add(f==='all' ? 'show-all' : f==='stock' ? 'show-stock' : 'show-quote');
-  });
-});
-
-// Precio dinámico según medida elegida (productos en stock)
-function toCamel(str){
-  return str.replace(/-([a-z0-9])/g, (m,c)=>c.toUpperCase());
-}
-document.querySelectorAll('.stock-size').forEach(select=>{
-  const priceEl = select.closest('.shop-body').querySelector('.price-value');
-  const render = ()=>{
-    const raw = select.dataset[toCamel('price-'+select.value)];
-    if(raw){
-      priceEl.textContent = '$' + parseInt(raw,10).toLocaleString('es-AR');
-    }
-  };
-  select.addEventListener('change', render);
-  render();
-});
-
-// Botón "Comprar ahora" (productos en stock — Mercado Pago)
-document.querySelectorAll('.buy-now').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const card = btn.closest('.shop-card');
-    const select = card.querySelector('.stock-size');
-    const priceText = card.querySelector('.price-value').textContent;
-    const link = btn.dataset.mpLink;
-    if(!link || link.includes('TU-LINK-DE-PAGO')){
-      alert('Este producto todavía no tiene el link de pago de Mercado Pago configurado. Generalo desde tu cuenta de Mercado Pago (Cobrar → Crear link de pago) y pegalo en el atributo data-mp-link de este botón.');
-      return;
-    }
-    window.open(link, '_blank', 'noopener');
-  });
-});
-
-// Botón "Solicitar presupuesto" (productos a medida — WhatsApp con medidas)
-document.querySelectorAll('.quote-now').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const card = btn.closest('.shop-card');
-    const producto = btn.dataset.product;
-    const ancho = card.querySelector('.dim-ancho').value;
-    const alto = card.querySelector('.dim-alto').value;
-    if(!ancho || !alto){
-      alert('Por favor completá ancho y alto para solicitar el presupuesto.');
-      return;
-    }
-    const texto = `Hola, quiero pedir un presupuesto para: ${producto}. Medidas: ${ancho}m x ${alto}m.`;
-    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank', 'noopener');
-  });
 });
 </script>
 </body>
