@@ -354,7 +354,16 @@ nav a:hover::after{width:100%;}
 }
 
 /* ---- Hero de la página Tienda ---- */
-.shop-hero{padding:180px 0 60px;background:var(--black);}
+.shop-hero{position:relative;padding:180px 0 60px;background:var(--black);overflow:hidden;}
+.shop-hero-media{position:absolute;inset:0;z-index:0;}
+.shop-hero-media img{
+  width:100%;height:100%;object-fit:cover;
+}
+.shop-hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg, rgba(6,8,10,0.94) 0%, rgba(6,8,10,0.88) 38%, rgba(6,8,10,0.55) 75%, rgba(6,8,10,0.4) 100%);
+}
+.shop-hero-content{position:relative;z-index:1;}
 .shop-hero h1{color:#fff;font-size:clamp(36px,5vw,56px);line-height:1.05;margin:14px 0 18px;}
 .shop-hero-sub{color:#9aa1ab;font-size:16.5px;font-weight:300;max-width:520px;}
 .shop-hero .eyebrow{color:var(--silver-light);}
@@ -580,7 +589,10 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
 <!-- ================= PAGE HERO ================= -->
 <section class="shop-hero">
-  <div class="container">
+  <div class="shop-hero-media">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&h=1400&fit=crop&crop=focalpoint&fp-x=0.4&fp-y=0.32&fp-z=2.1" alt="Detalle cercano de las aberturas de aluminio de la vivienda del inicio">
+  </div>
+  <div class="container shop-hero-content">
     <p class="eyebrow" style="justify-content:flex-start;">Tienda online</p>
     <h1>Comprá tu abertura</h1>
     <p class="shop-hero-sub">Modelos en stock listos para comprar directo, o pedí presupuesto a medida para tu proyecto. Todo en un mismo lugar.</p>
