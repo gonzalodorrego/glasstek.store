@@ -294,6 +294,24 @@ nav a:hover::after{width:100%;}
 }
 
 /* ================= PRODUCTOS ================= */
+/* ================= LÍNEAS DE ABERTURAS ================= */
+.lines{padding:150px 0;background:var(--white);}
+.lines-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line);}
+.line-card{background:var(--white);display:flex;flex-direction:column;}
+.line-card .limg{position:relative;height:340px;overflow:hidden;}
+.line-card .limg img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
+.line-card:hover .limg img{transform:scale(1.06);}
+.line-card .ltag{
+  position:absolute;top:18px;left:18px;font-family:var(--font-mono);font-size:11px;color:#fff;
+  background:rgba(10,10,12,0.6);padding:5px 11px;letter-spacing:0.05em;backdrop-filter:blur(4px);text-transform:uppercase;
+}
+.line-body{padding:32px 34px 38px;}
+.line-body h3{font-size:24px;margin-bottom:12px;}
+.line-body p{font-size:15px;color:#666d76;font-weight:300;line-height:1.7;}
+@media(max-width:820px){
+  .lines-grid{grid-template-columns:1fr;}
+}
+
 .products{padding:150px 0;background:var(--bg-soft);}
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
 .product-card{
@@ -576,6 +594,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
     <nav>
       <ul>
         <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#lineas">Líneas</a></li>
         <li><a href="#productos">Productos</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#galeria">Galería</a></li>
@@ -590,6 +609,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
 <div class="mobile-nav" id="mobileNav">
   <a href="#nosotros">Nosotros</a>
+  <a href="#lineas">Líneas</a>
   <a href="#productos">Productos</a>
   <a href="#proceso">Proceso</a>
   <a href="#galeria">Galería</a>
@@ -700,11 +720,46 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   </div>
 </section>
 
+<!-- ================= LÍNEAS DE ABERTURAS ================= -->
+<section class="lines" id="lineas">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Nuestras líneas</p>
+      <h2>Líneas de aberturas</h2>
+      <p>Trabajamos con dos líneas de perfiles de aluminio, cada una pensada para un tipo de proyecto distinto.</p>
+    </div>
+
+    <div class="lines-grid reveal">
+      <article class="line-card">
+        <div class="limg">
+          <span class="ltag">Línea Modena</span>
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1000&auto=format&fit=crop" alt="Ventanas de la línea Modena instaladas en una vivienda moderna">
+        </div>
+        <div class="line-body">
+          <h3>Modena</h3>
+          <p>Perfiles de diseño minimalista y líneas depuradas, pensados para proyectos residenciales que buscan una estética limpia sin resignar rendimiento térmico ni acústico.</p>
+        </div>
+      </article>
+
+      <article class="line-card">
+        <div class="limg">
+          <span class="ltag">Línea Premium A30</span>
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" alt="Frente vidriado de gran formato con perfiles de la línea Premium A30">
+        </div>
+        <div class="line-body">
+          <h3>Premium A30</h3>
+          <p>Nuestra línea de alta gama, con mayor sección estructural para paños de gran formato. Ideal para frentes vidriados y proyectos que exigen máxima resistencia y aislación.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PRODUCTOS ================= -->
 <section class="products" id="productos">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Catálogo</p>
+      <p class="eyebrow">Tipos de aberturas</p>
       <h2>Aberturas para cada tipo de proyecto</h2>
       <p>Un sistema completo de soluciones en aluminio, fabricadas a medida con la misma exigencia en cada detalle.</p>
     </div>
@@ -1017,6 +1072,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
         <h5>Navegación</h5>
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#lineas">Líneas</a></li>
           <li><a href="#productos">Productos</a></li>
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="#proceso">Proceso</a></li>
