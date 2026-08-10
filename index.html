@@ -246,7 +246,11 @@ nav a:hover::after{width:100%;}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
 .eyebrow-mobile-only{display:none;}
 @media(max-width:760px){
-  .eyebrow-mobile-only{display:flex;justify-content:flex-end;width:100%;text-align:right;}
+  .eyebrow-mobile-only{
+    display:block;text-align:right;margin:50px 0 0;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver-light);
+  }
+  .eyebrow-mobile-only .tick-after{display:inline-block;width:34px;height:1px;background:var(--silver-light);margin-left:10px;vertical-align:middle;}
 }
 
 .scroll-hint{
@@ -664,7 +668,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
         <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
         <a href="tienda.html" class="btn btn-ghost">Ir a la tienda</a>
       </div>
-      <p class="hero-eyebrow-top eyebrow eyebrow-right eyebrow-mobile-only">Diseñamos cada proyecto a medida</p>
+      <p class="eyebrow-mobile-only">Diseñamos cada proyecto a medida<span class="tick-after"></span></p>
       <div class="scroll-hint"><span class="scroll-line"></span>Descubrir</div>
     </div>
   </div>
