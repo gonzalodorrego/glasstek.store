@@ -287,7 +287,7 @@ nav a:hover::after{width:100%;}
 .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:80px;align-items:start;}
 .about-media{position:relative;}
 .about-media .frame-img{position:relative;overflow:hidden;}
-.about-media img{width:100%;height:560px;object-fit:cover;}
+.about-media img,.about-media video{width:100%;height:560px;object-fit:cover;}
 .about-media .tag{
   position:absolute;bottom:-1px;left:-1px;background:var(--black);color:#fff;
   padding:20px 24px;font-family:var(--font-mono);font-size:12px;letter-spacing:.05em;
@@ -304,7 +304,7 @@ nav a:hover::after{width:100%;}
 
 @media(max-width:940px){
   .about-grid{grid-template-columns:1fr;gap:48px;}
-  .about-media img{height:400px;}
+  .about-media img,.about-media video{height:400px;}
   .about-list{grid-template-columns:1fr;}
 }
 
@@ -703,7 +703,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   <div class="container about-grid">
     <div class="about-media reveal">
       <div class="frame-img">
-        <img src="quienes-somos-real.jpg" alt="Depósito y planta de fabricación de aberturas de aluminio GLASSTEK">
+        <video src="quienes-somos-video.mp4" autoplay muted loop playsinline aria-label="Depósito y planta de fabricación de aberturas de aluminio GLASSTEK"></video>
       </div>
     </div>
     <div class="about-copy reveal">
