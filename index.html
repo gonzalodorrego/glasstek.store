@@ -701,7 +701,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   <div class="container about-grid">
     <div class="about-media reveal">
       <div class="frame-img">
-        <video src="quienes-somos-video.mp4" autoplay muted loop playsinline aria-label="Depósito y planta de fabricación de aberturas de aluminio GLASSTEK"></video>
+        <video id="aboutVideo" src="quienes-somos-video.mp4" muted playsinline preload="auto" aria-label="Depósito y planta de fabricación de aberturas de aluminio GLASSTEK"></video>
       </div>
     </div>
     <div class="about-copy reveal">
@@ -1051,6 +1051,22 @@ burger.addEventListener('click', ()=>{
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
   burger.classList.remove('open'); mobileNav.classList.remove('open');
 }));
+
+/* Video de Quiénes somos: se reproduce solo al entrar en pantalla, se reinicia cada vez que vuelve a aparecer */
+const aboutVideo = document.getElementById('aboutVideo');
+if(aboutVideo){
+  const aboutVideoIO = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        aboutVideo.currentTime = 0;
+        aboutVideo.play().catch(()=>{});
+      } else {
+        aboutVideo.pause();
+      }
+    });
+  },{threshold:0.1});
+  aboutVideoIO.observe(aboutVideo);
+}
 
 /* Scroll reveal */
 const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
