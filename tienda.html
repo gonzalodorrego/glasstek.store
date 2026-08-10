@@ -328,6 +328,16 @@ nav a:hover::after{width:100%;}
   width:100%;border:1px solid var(--line);padding:10px 12px;font-family:var(--font-body);font-size:14px;
   background:var(--bg-soft);color:var(--graphite);
 }
+.shop-field select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  border:1px solid var(--line-dark);background-color:var(--white);
+  font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;
+  padding:11px 34px 11px 13px;cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%2317191d' stroke-width='1.3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 13px center;background-size:10px 6px;
+  transition:border-color .3s var(--ease);
+}
+.shop-field select:hover{border-color:var(--graphite);}
 .shop-field select:focus,.shop-field input:focus{outline:none;border-color:var(--steel-2);}
 .shop-dims{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 
@@ -643,10 +653,14 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
           <p class="shop-desc">Aluminio línea Módena, apertura simple a paño. Ideal para baños y espacios chicos.</p>
           <div class="shop-field">
             <label for="size-v2">Medida</label>
-            <select id="size-v2" class="stock-size" data-price-60x60="72000" data-price-80x100="98000" data-price-100x120="126000">
-              <option value="60x60">0,60 x 0,60 m</option>
-              <option value="80x100">0,80 x 1,00 m</option>
-              <option value="100x120">1,00 x 1,20 m</option>
+            <select id="size-v2" class="stock-size" data-price-40x60="48000" data-price-40x80="58000" data-price-40x120="72000" data-price-40x150="85000" data-price-50x80="62000" data-price-50x100="75000" data-price-50x150="92000">
+              <option value="40x60">0,40 x 0,60 m</option>
+              <option value="40x80">0,40 x 0,80 m</option>
+              <option value="40x120">0,40 x 1,20 m</option>
+              <option value="40x150">0,40 x 1,50 m</option>
+              <option value="50x80">0,50 x 0,80 m</option>
+              <option value="50x100">0,50 x 1,00 m</option>
+              <option value="50x150">0,50 x 1,50 m</option>
             </select>
           </div>
           <div class="shop-price"><span>Precio</span><span class="price-value">$72.000</span></div>
