@@ -247,10 +247,13 @@ nav a:hover::after{width:100%;}
 .eyebrow-mobile-only{display:none;}
 @media(max-width:760px){
   .eyebrow-mobile-only{
-    display:block;text-align:right;margin:50px 0 0;
+    display:block;text-align:right;margin:50px -32px 0 0;
     font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver-light);
   }
   .eyebrow-mobile-only .tick-after{display:inline-block;width:34px;height:1px;background:var(--silver-light);margin-left:10px;vertical-align:middle;}
+}
+@media(max-width:640px){
+  .eyebrow-mobile-only{margin-right:-20px;}
 }
 
 .scroll-hint{
