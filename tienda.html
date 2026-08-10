@@ -303,8 +303,10 @@ nav a:hover::after{width:100%;}
 .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
 .shop-card{background:var(--white);display:flex;flex-direction:column;transition:box-shadow .4s var(--ease);}
 .shop-card[data-type="quote"]{display:none;}
-.shop-card[data-type="stock"]{display:none;}
-.shop-grid.show-stock .shop-card[data-type="stock"]{display:flex;}
+.shop-card[data-type="stock-ventanas"]{display:none;}
+.shop-card[data-type="stock-puertas"]{display:none;}
+.shop-grid.show-stock-ventanas .shop-card[data-type="stock-ventanas"]{display:flex;}
+.shop-grid.show-stock-puertas .shop-card[data-type="stock-puertas"]{display:flex;}
 .shop-grid.show-quote .shop-card[data-type="quote"]{display:flex;}
 .shop-grid.show-all .shop-card{display:flex;}
 
@@ -613,14 +615,15 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
     <div class="shop-tabs reveal">
       <button class="shop-tab active" data-filter="all">Todos</button>
-      <button class="shop-tab" data-filter="stock">En stock — Compra directa</button>
+      <button class="shop-tab" data-filter="stock-ventanas">Medidas standard ventanas</button>
+      <button class="shop-tab" data-filter="stock-puertas">Medidas standard puertas</button>
       <button class="shop-tab" data-filter="quote">A medida — Por encargue</button>
     </div>
 
     <div class="shop-grid show-all reveal" id="shopGrid">
 
       <!-- ===== PRODUCTO EN STOCK 1 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-ventanas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=900&auto=format&fit=crop" alt="Ventana corrediza de aluminio línea Módena en stock">
@@ -643,7 +646,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 2 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-ventanas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=900&auto=format&fit=crop" alt="Ventana de abrir de aluminio línea Módena en stock">
@@ -670,7 +673,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 3 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-ventanas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="ventana-oscilobatiente-real.jpg" alt="Ventana oscilobatiente de aluminio línea Módena en stock">
@@ -693,7 +696,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-puertas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta de aluminio línea Módena en stock">
@@ -716,7 +719,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 5 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-ventanas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop" alt="Paño fijo de aluminio en stock">
@@ -739,7 +742,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 6 ===== -->
-      <article class="shop-card" data-type="stock">
+      <article class="shop-card" data-type="stock-ventanas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=900&auto=format&fit=crop" alt="Ventana patagónica de aluminio línea Módena en stock">
@@ -914,15 +917,15 @@ revealEls.forEach(el=>io.observe(el));
 /* ===== TIENDA ===== */
 const WA_NUMBER = '5491169670130';
 
-// Filtros (Todos / En stock / A medida)
+// Filtros (Todos / Medidas standard ventanas / Medidas standard puertas / A medida)
 const shopGrid = document.getElementById('shopGrid');
 document.querySelectorAll('.shop-tab').forEach(tab=>{
   tab.addEventListener('click', ()=>{
     document.querySelectorAll('.shop-tab').forEach(t=>t.classList.remove('active'));
     tab.classList.add('active');
-    shopGrid.classList.remove('show-all','show-stock','show-quote');
+    shopGrid.classList.remove('show-all','show-stock-ventanas','show-stock-puertas','show-quote');
     const f = tab.dataset.filter;
-    shopGrid.classList.add(f==='all' ? 'show-all' : f==='stock' ? 'show-stock' : 'show-quote');
+    shopGrid.classList.add('show-'+f);
   });
 });
 
