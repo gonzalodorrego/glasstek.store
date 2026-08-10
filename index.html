@@ -622,7 +622,6 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
         <li><a href="#lineas">Líneas</a></li>
         <li><a href="#productos">Productos</a></li>
         <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#galeria">Galería</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -637,7 +636,6 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   <a href="#lineas">Líneas</a>
   <a href="#productos">Productos</a>
   <a href="#proceso">Proceso</a>
-  <a href="#galeria">Galería</a>
   <a href="#contacto">Contacto</a>
 </div>
 
@@ -907,62 +905,6 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
   </div>
 </section>
 
-<!-- ================= GALERIA ================= -->
-<section class="gallery" id="galeria">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Proyectos realizados</p>
-      <h2>Obras donde nuestras aberturas ya están instaladas</h2>
-      <p>Una selección de proyectos residenciales y comerciales fabricados e instalados por GLASSTEK.</p>
-    </div>
-  </div>
-
-  <div class="gallery-grid reveal" id="galleryGrid">
-    <div class="gallery-item" data-caption="Vivienda unifamiliar — Frente vidriado a medida">
-      <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=900&auto=format&fit=crop" alt="Vivienda moderna con frente vidriado de aluminio">
-      <div class="g-overlay"><span>Frente vidriado — Vivienda unifamiliar</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Edificio residencial — Ventanas corredizas en altura">
-      <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=900&auto=format&fit=crop" alt="Fachada de edificio moderno con grandes ventanales">
-      <div class="g-overlay"><span>Ventanas corredizas — Edificio residencial</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Casa de campo — Puertas balcón oscilobatientes">
-      <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=900&auto=format&fit=crop" alt="Casa de campo moderna con puertas balcón de aluminio">
-      <div class="g-overlay"><span>Puertas balcón — Casa de campo</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Departamento — Cerramiento de balcón">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=900&auto=format&fit=crop" alt="Cerramiento de aluminio en balcón de departamento moderno">
-      <div class="g-overlay"><span>Cerramiento — Balcón de departamento</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Estudio de arquitectura — Puerta de entrada premium">
-      <img src="https://images.unsplash.com/photo-1518481852452-9415b262eba4?q=80&w=900&auto=format&fit=crop" alt="Entrada de vivienda moderna con puerta de aluminio premium">
-      <div class="g-overlay"><span>Puerta de entrada — Diseño premium</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Oficinas corporativas — Muro cortina">
-      <img src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?q=80&w=900&auto=format&fit=crop" alt="Edificio de oficinas con muro cortina de aluminio y vidrio">
-      <div class="g-overlay"><span>Muro cortina — Edificio corporativo</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Vivienda contemporánea — Ventanas oscilobatientes">
-      <img src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=900&auto=format&fit=crop" alt="Interior moderno con ventanas oscilobatientes de aluminio">
-      <div class="g-overlay"><span>Ventanas oscilobatientes — Interior</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Casa minimalista — Aberturas a medida">
-      <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=900&auto=format&fit=crop" alt="Living moderno con grandes ventanales de aluminio">
-      <div class="g-overlay"><span>Aberturas a medida — Living minimalista</span></div>
-    </div>
-    <div class="gallery-item" data-caption="Vivienda de doble altura — Frente vidriado nocturno">
-      <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=900&auto=format&fit=crop" alt="Vivienda moderna iluminada de noche con frente vidriado">
-      <div class="g-overlay"><span>Frente vidriado — Vista nocturna</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
-  <img src="" alt="" id="lightboxImg">
-  <div class="lightbox-cap" id="lightboxCap"></div>
-</div>
-
 <!-- ================= FAQ ================= -->
 <section class="faq">
   <div class="container">
@@ -1147,23 +1089,6 @@ document.querySelectorAll('.faq-item').forEach(item=>{
     a.style.maxHeight = !isOpen ? a.scrollHeight+'px' : null;
   });
 });
-
-/* Gallery lightbox */
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxCap = document.getElementById('lightboxCap');
-document.querySelectorAll('.gallery-item').forEach(item=>{
-  item.addEventListener('click', ()=>{
-    const img = item.querySelector('img');
-    lightboxImg.src = img.src.replace('w=900','w=1800');
-    lightboxImg.alt = img.alt;
-    lightboxCap.textContent = item.dataset.caption || '';
-    lightbox.classList.add('open');
-  });
-});
-document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
-lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('open'); });
 
 /* Contact form (demo submit — ready to wire to a CRM/API endpoint) */
 const form = document.getElementById('contactForm');
