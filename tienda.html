@@ -98,7 +98,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.02
 .section-head h2{font-size:clamp(30px,4vw,44px);line-height:1.12;}
 .section-head p{margin-top:18px;font-size:17px;color:#565b63;font-weight:300;}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
 .reveal.in{opacity:1;transform:translateY(0);}
 .reveal-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
 .reveal-stagger.in > *{opacity:1;transform:translateY(0);}
@@ -1019,7 +1019,7 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
   });
-},{threshold:0.15});
+},{threshold:0.01, rootMargin:'0px 0px 150px 0px'});
 revealEls.forEach(el=>io.observe(el));
 
 /* ===== TIENDA ===== */
