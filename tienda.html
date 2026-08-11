@@ -319,6 +319,10 @@ nav a:hover::after{width:100%;}
 }
 .shop-badge.stock{background:var(--steel-2);color:#fff;}
 .shop-badge.quote{background:rgba(10,10,12,0.72);color:#fff;backdrop-filter:blur(4px);}
+.shop-img .ltag{
+  position:absolute;top:14px;right:14px;font-family:var(--font-mono);font-size:10.5px;color:#fff;
+  background:rgba(10,10,12,0.65);padding:5px 10px;letter-spacing:0.05em;backdrop-filter:blur(4px);text-transform:uppercase;
+}
 
 .shop-body{padding:26px 24px 28px;flex:1;display:flex;flex-direction:column;}
 .shop-body h3{font-size:18px;margin-bottom:6px;}
@@ -633,13 +637,21 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
           <p class="shop-desc">Aluminio línea Módena, 2 hojas, apta para DVH. Tamaños estándar listos para retirar o enviar.</p>
           <div class="shop-field">
             <label for="size-v1">Medida</label>
-            <select id="size-v1" class="stock-size" data-price-100x100="145000" data-price-120x120="168000" data-price-150x120="192000">
+            <select id="size-v1" class="stock-size" data-price-60x40="68000" data-price-100x50="92000" data-price-100x100="145000" data-price-120x50="108000" data-price-120x100="162000" data-price-150x100="185000" data-price-150x150="228000" data-price-120x200="245000" data-price-150x200="278000" data-price-200x200="342000" data-price-240x200="392000">
+              <option value="60x40">0,60 x 0,40 m</option>
+              <option value="100x50">1,00 x 0,50 m</option>
               <option value="100x100">1,00 x 1,00 m</option>
-              <option value="120x120">1,20 x 1,20 m</option>
-              <option value="150x120">1,50 x 1,20 m</option>
+              <option value="120x50">1,20 x 0,50 m</option>
+              <option value="120x100">1,20 x 1,00 m</option>
+              <option value="150x100">1,50 x 1,00 m</option>
+              <option value="150x150">1,50 x 1,50 m</option>
+              <option value="120x200">1,20 x 2,00 m</option>
+              <option value="150x200">1,50 x 2,00 m</option>
+              <option value="200x200">2,00 x 2,00 m</option>
+              <option value="240x200">2,40 x 2,00 m</option>
             </select>
           </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$145.000</span></div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$68.000</span></div>
           <button class="btn btn-primary buy-now" data-product="Ventana corrediza — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
           <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
         </div>
@@ -683,37 +695,130 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
           <p class="shop-desc">Aluminio línea Módena, doble apertura para ventilación controlada y sellado hermético.</p>
           <div class="shop-field">
             <label for="size-v3">Medida</label>
-            <select id="size-v3" class="stock-size" data-price-60x60="82000" data-price-80x100="112000" data-price-100x120="144000">
-              <option value="60x60">0,60 x 0,60 m</option>
-              <option value="80x100">0,80 x 1,00 m</option>
-              <option value="100x120">1,00 x 1,20 m</option>
+            <select id="size-v3" class="stock-size" data-price-50x80="76000" data-price-50x120="98000" data-price-50x150="118000">
+              <option value="50x80">0,50 x 0,80 m</option>
+              <option value="50x120">0,50 x 1,20 m</option>
+              <option value="50x150">0,50 x 1,50 m</option>
             </select>
           </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$82.000</span></div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$76.000</span></div>
           <button class="btn btn-primary buy-now" data-product="Ventana oscilobatiente — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
           <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
         </div>
       </article>
 
-      <!-- ===== PRODUCTO EN STOCK 4 ===== -->
+      <!-- ===== PRODUCTO EN STOCK 4 — Puerta Ciego ===== -->
       <article class="shop-card" data-type="stock-puertas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta de aluminio línea Módena en stock">
+          <span class="ltag">Ciego</span>
+          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta ciega de aluminio línea Módena en stock">
         </div>
         <div class="shop-body">
-          <h3>Puertas — Línea Módena</h3>
-          <p class="shop-desc">Aluminio línea Módena, apta para acceso a balcón o patio.</p>
+          <h3>Puerta Ciego — Línea Módena</h3>
+          <p class="shop-desc">Hoja completamente ciega, sin paños vidriados. Máxima privacidad y aislación.</p>
           <div class="shop-field">
-            <label for="size-v4">Medida</label>
-            <select id="size-v4" class="stock-size" data-price-150x200="238000" data-price-180x200="269000" data-price-200x200="298000">
-              <option value="150x200">1,50 x 2,00 m</option>
-              <option value="180x200">1,80 x 2,00 m</option>
-              <option value="200x200">2,00 x 2,00 m</option>
+            <label for="size-v4a">Medida</label>
+            <select id="size-v4a" class="stock-size" data-price-80x200="208000" data-price-100x200="238000">
+              <option value="80x200">0,80 x 2,00 m</option>
+              <option value="100x200">1,00 x 2,00 m</option>
             </select>
           </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$238.000</span></div>
-          <button class="btn btn-primary buy-now" data-product="Puertas — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$208.000</span></div>
+          <button class="btn btn-primary buy-now" data-product="Puerta Ciego — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
+          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+        </div>
+      </article>
+
+      <!-- ===== PRODUCTO EN STOCK 4B — Puerta medio vidrio ===== -->
+      <article class="shop-card" data-type="stock-puertas">
+        <div class="shop-img">
+          <span class="shop-badge stock">En stock</span>
+          <span class="ltag">Medio vidrio</span>
+          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta medio vidrio de aluminio línea Módena en stock">
+        </div>
+        <div class="shop-body">
+          <h3>Puerta medio vidrio — Línea Módena</h3>
+          <p class="shop-desc">Mitad ciega, mitad vidriada. Un equilibrio entre luz natural y privacidad.</p>
+          <div class="shop-field">
+            <label for="size-v4b">Medida</label>
+            <select id="size-v4b" class="stock-size" data-price-80x200="222000" data-price-100x200="252000">
+              <option value="80x200">0,80 x 2,00 m</option>
+              <option value="100x200">1,00 x 2,00 m</option>
+            </select>
+          </div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$222.000</span></div>
+          <button class="btn btn-primary buy-now" data-product="Puerta medio vidrio — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
+          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+        </div>
+      </article>
+
+      <!-- ===== PRODUCTO EN STOCK 4C — Puerta un cuarto de vidrio ===== -->
+      <article class="shop-card" data-type="stock-puertas">
+        <div class="shop-img">
+          <span class="shop-badge stock">En stock</span>
+          <span class="ltag">Un cuarto de vidrio</span>
+          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta un cuarto de vidrio de aluminio línea Módena en stock">
+        </div>
+        <div class="shop-body">
+          <h3>Puerta un cuarto de vidrio — Línea Módena</h3>
+          <p class="shop-desc">Un paño vidriado acotado en la parte superior, el resto ciego. Ideal para dar algo de luz sin exponer el interior.</p>
+          <div class="shop-field">
+            <label for="size-v4c">Medida</label>
+            <select id="size-v4c" class="stock-size" data-price-80x200="215000" data-price-90x200="230000">
+              <option value="80x200">0,80 x 2,00 m</option>
+              <option value="90x200">0,90 x 2,00 m</option>
+            </select>
+          </div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$215.000</span></div>
+          <button class="btn btn-primary buy-now" data-product="Puerta un cuarto de vidrio — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
+          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+        </div>
+      </article>
+
+      <!-- ===== PRODUCTO EN STOCK 4D — Puerta vidriada total ===== -->
+      <article class="shop-card" data-type="stock-puertas">
+        <div class="shop-img">
+          <span class="shop-badge stock">En stock</span>
+          <span class="ltag">Vidriada total</span>
+          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta vidriada total de aluminio línea Módena en stock">
+        </div>
+        <div class="shop-body">
+          <h3>Puerta vidriada total — Línea Módena</h3>
+          <p class="shop-desc">Hoja completamente vidriada, máxima luminosidad y visual hacia el exterior.</p>
+          <div class="shop-field">
+            <label for="size-v4d">Medida</label>
+            <select id="size-v4d" class="stock-size" data-price-80x200="235000" data-price-100x200="265000">
+              <option value="80x200">0,80 x 2,00 m</option>
+              <option value="100x200">1,00 x 2,00 m</option>
+            </select>
+          </div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$235.000</span></div>
+          <button class="btn btn-primary buy-now" data-product="Puerta vidriada total — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
+          <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+        </div>
+      </article>
+
+      <!-- ===== PRODUCTO EN STOCK 4E — Puerta con paño fijo lateral ===== -->
+      <article class="shop-card" data-type="stock-puertas">
+        <div class="shop-img">
+          <span class="shop-badge stock">En stock</span>
+          <span class="ltag">Con paño fijo lateral</span>
+          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta con paño fijo lateral de aluminio línea Módena en stock">
+        </div>
+        <div class="shop-body">
+          <h3>Puertas con paño fijo lateral — Línea Módena</h3>
+          <p class="shop-desc">Puerta de 2,00 m de alto combinada con paños fijos laterales, según la combinación elegida.</p>
+          <div class="shop-field">
+            <label for="size-v4e">Combinación</label>
+            <select id="size-v4e" class="stock-size" data-price-combo1="268000" data-price-combo2="285000" data-price-combo3="312000">
+              <option value="combo1">Puerta 2,00 m + paño fijo lateral 0,40 x 0,80 m</option>
+              <option value="combo2">Puerta 2,00 m + paño fijo lateral 0,50 x 0,90 m</option>
+              <option value="combo3">Puerta 2,00 m + 3 paños fijos laterales 0,50 / 0,90 / 0,50 m</option>
+            </select>
+          </div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$268.000</span></div>
+          <button class="btn btn-primary buy-now" data-product="Puertas con paño fijo lateral — Línea Módena" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
           <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
         </div>
       </article>
@@ -729,13 +834,16 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
           <p class="shop-desc">Vidrio fijo sin apertura, ideal para completar grandes superficies vidriadas junto a otras aberturas.</p>
           <div class="shop-field">
             <label for="size-v5">Medida</label>
-            <select id="size-v5" class="stock-size" data-price-100x100="98000" data-price-120x150="142000" data-price-150x200="205000">
-              <option value="100x100">1,00 x 1,00 m</option>
-              <option value="120x150">1,20 x 1,50 m</option>
-              <option value="150x200">1,50 x 2,00 m</option>
+            <select id="size-v5" class="stock-size" data-price-40x80="52000" data-price-40x100="62000" data-price-40x150="86000" data-price-50x100="72000" data-price-50x150="98000" data-price-80x200="168000">
+              <option value="40x80">0,40 x 0,80 m</option>
+              <option value="40x100">0,40 x 1,00 m</option>
+              <option value="40x150">0,40 x 1,50 m</option>
+              <option value="50x100">0,50 x 1,00 m</option>
+              <option value="50x150">0,50 x 1,50 m</option>
+              <option value="80x200">0,80 x 2,00 m</option>
             </select>
           </div>
-          <div class="shop-price"><span>Precio</span><span class="price-value">$98.000</span></div>
+          <div class="shop-price"><span>Precio</span><span class="price-value">$52.000</span></div>
           <button class="btn btn-primary buy-now" data-product="Paños fijos" data-mp-link="https://mpago.la/TU-LINK-DE-PAGO-AQUI">Comprar ahora</button>
           <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
         </div>
