@@ -326,11 +326,13 @@ nav a:hover::after{width:100%;}
 }
 .shop-carousel .cdot.active{background:var(--graphite);transform:scale(1.3);}
 .shop-carousel .carousel-hint{
-  width:0;height:0;margin-left:4px;
+  width:0;height:0;margin-left:4px;padding:0;background:none;
   border-top:4px solid transparent;border-bottom:4px solid transparent;
   border-left:6px solid rgba(23,25,29,0.55);
+  cursor:pointer;
   animation:carouselHintNudge 1.8s ease-in-out infinite;
 }
+.shop-carousel .carousel-hint:hover{border-left-color:var(--graphite);}
 @keyframes carouselHintNudge{
   0%,100%{transform:translateX(0);opacity:0.55;}
   50%{transform:translateX(3px);opacity:1;}
@@ -661,7 +663,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
             <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
             <button class="cdot" data-i="1" aria-label="Foto 2"></button>
             <button class="cdot" data-i="2" aria-label="Foto 3"></button>
-            <span class="carousel-hint" aria-hidden="true"></span>
+            <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
           </div>
         </div>
         <div class="shop-body">
@@ -1061,6 +1063,14 @@ document.querySelectorAll('.shop-carousel').forEach(carousel=>{
       show(parseInt(dot.dataset.i, 10));
     });
   });
+
+  const hintBtn = carousel.querySelector('.carousel-hint');
+  if(hintBtn){
+    hintBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      show(idx + 1);
+    });
+  }
 
   /* Deslizar con el dedo en mobile */
   let touchStartX = 0;
