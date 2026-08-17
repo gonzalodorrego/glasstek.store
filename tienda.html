@@ -881,9 +881,19 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
       <!-- ===== PRODUCTO EN STOCK 5 ===== -->
       <article class="shop-card" data-type="stock-ventanas">
-        <div class="shop-img">
+        <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop" alt="Paño fijo de aluminio en stock">
+          <div class="carousel-track">
+            <img src="pano-fijo-modena.jpg" alt="Paño fijo de aluminio negro línea Módena instalado en fachada, vista nocturna" class="active">
+            <img src="pano-fijo-detalle1.jpg" alt="Paño fijo línea Módena en blanco, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+            <img src="pano-fijo-detalle2.jpg" alt="Paño fijo línea Módena en negro, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+          </div>
+          <div class="carousel-dots">
+            <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
+            <button class="cdot" data-i="1" aria-label="Foto 2"></button>
+            <button class="cdot" data-i="2" aria-label="Foto 3"></button>
+            <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
+          </div>
         </div>
         <div class="shop-body">
           <h3>Paños fijos</h3>
