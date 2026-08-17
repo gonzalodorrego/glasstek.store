@@ -932,9 +932,20 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
       <!-- ===== PRODUCTO EN STOCK 6 ===== -->
       <article class="shop-card" data-type="stock-ventanas">
-        <div class="shop-img">
+        <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=900&auto=format&fit=crop" alt="Ventana patagónica de aluminio línea Módena en stock">
+          <div class="carousel-track">
+            <img src="ventana-patagonica-modena.jpg" alt="Ventana patagónica de aluminio negro línea Módena instalada en fachada, vista nocturna" class="active">
+            <img src="ventana-patagonica-detalle1.jpg" alt="Ventana patagónica línea Módena en blanco, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+            <img src="ventana-patagonica-detalle2.jpg" alt="Ventana patagónica línea Módena en negro, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+          </div>
+          <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
+            <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
+            <button class="cdot" data-i="1" aria-label="Foto 2"></button>
+            <button class="cdot" data-i="2" aria-label="Foto 3"></button>
+            <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
+          </div>
         </div>
         <div class="shop-body">
           <h3>Ventana Patagónica — Línea Módena</h3>
