@@ -334,9 +334,16 @@ nav a:hover::after{width:100%;}
 .shop-carousel .carousel-hint:hover{border-left-color:var(--graphite);}
 .shop-carousel .carousel-hint-prev{
   margin-left:0;margin-right:5px;
-  transform:scaleX(-1);
+  border-left:none;
+  border-right:9px solid rgba(23,25,29,0.55);
+  animation:carouselHintNudgePrev 1.8s ease-in-out infinite;
 }
+.shop-carousel .carousel-hint-prev:hover{border-right-color:var(--graphite);}
 .shop-carousel .carousel-hint-prev[hidden]{display:none;}
+@keyframes carouselHintNudgePrev{
+  0%,100%{transform:translateX(0);opacity:0.55;}
+  50%{transform:translateX(-3px);opacity:1;}
+}
 @keyframes carouselHintNudge{
   0%,100%{transform:translateX(0);opacity:0.55;}
   50%{transform:translateX(3px);opacity:1;}
