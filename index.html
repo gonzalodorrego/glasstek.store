@@ -602,6 +602,20 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 .footer-col li{margin-bottom:11px;font-size:13.5px;font-weight:300;}
 .footer-col a:hover{color:#fff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#5f656e;}
+.dev-credit{display:inline-flex;align-items:center;gap:8px;}
+.dev-contact-btn{
+  width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);
+  color:#5f656e;font-family:var(--font-mono);font-size:10px;line-height:1;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .3s var(--ease),color .3s var(--ease);
+}
+.dev-contact-btn:hover,.dev-contact-btn:focus-visible{border-color:#fff;color:#fff;}
+.dev-contact-number{
+  font-family:var(--font-mono);color:#8b9199;white-space:nowrap;
+  max-width:0;opacity:0;overflow:hidden;
+  transition:max-width .4s var(--ease),opacity .3s var(--ease);
+}
+.dev-contact-number.show{max-width:160px;opacity:1;}
 
 @media(max-width:900px){
   nav,.header-actions .btn{display:none;}
@@ -1027,12 +1041,26 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
     <div class="footer-bottom">
       <span>© <span id="year"></span> GLASSTEK. Todos los derechos reservados.</span>
       <span>Aberturas de aluminio de alta gama · Hecho a medida</span>
+      <span class="dev-credit">Desarrollado por Veloxhub
+        <button type="button" class="dev-contact-btn" id="devContactBtn" aria-label="Mostrar contacto de Veloxhub" aria-expanded="false">•</button>
+        <span class="dev-contact-number" id="devContactNumber">11 3424-1049</span>
+      </span>
     </div>
   </div>
 </footer>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Crédito Veloxhub: revela el número de contacto al tocar el botón */
+const devBtn = document.getElementById('devContactBtn');
+const devNumber = document.getElementById('devContactNumber');
+if(devBtn && devNumber){
+  devBtn.addEventListener('click', ()=>{
+    const shown = devNumber.classList.toggle('show');
+    devBtn.setAttribute('aria-expanded', shown);
+  });
+}
 
 /* Header on scroll */
 const header = document.getElementById('siteHeader');
