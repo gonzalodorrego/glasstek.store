@@ -333,6 +333,11 @@ nav a:hover::after{width:100%;}
   animation:carouselHintNudge 1.8s ease-in-out infinite;
 }
 .shop-carousel .carousel-hint:hover{border-left-color:var(--graphite);}
+.shop-carousel .carousel-hint-prev{
+  margin-left:0;margin-right:5px;
+  transform:scaleX(-1);
+}
+.shop-carousel .carousel-hint-prev[hidden]{display:none;}
 @keyframes carouselHintNudge{
   0%,100%{transform:translateX(0);opacity:0.55;}
   50%{transform:translateX(3px);opacity:1;}
@@ -660,6 +665,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
             <img src="ventana-corrediza-detalle2.jpg" alt="Detalle del mecanismo y perfil de la ventana corrediza línea Módena" style="object-fit:contain;background:#f4f5f6;">
           </div>
           <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
             <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
             <button class="cdot" data-i="1" aria-label="Foto 2"></button>
             <button class="cdot" data-i="2" aria-label="Foto 3"></button>
@@ -701,6 +707,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
             <img src="ventana-abrir-detalle2.jpg" alt="Detalle del herraje y perfil de la ventana de abrir línea Módena" style="object-fit:contain;background:#f4f5f6;">
           </div>
           <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
             <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
             <button class="cdot" data-i="1" aria-label="Foto 2"></button>
             <button class="cdot" data-i="2" aria-label="Foto 3"></button>
@@ -739,6 +746,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
             <img src="ventana-oscilobatiente-detalle3.jpg" alt="Detalle de la apertura oscilante de la ventana oscilobatiente línea Módena" style="object-fit:contain;background:#f4f5f6;">
           </div>
           <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
             <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
             <button class="cdot" data-i="1" aria-label="Foto 2"></button>
             <button class="cdot" data-i="2" aria-label="Foto 3"></button>
@@ -889,6 +897,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
             <img src="pano-fijo-detalle2.jpg" alt="Paño fijo línea Módena en negro, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
           </div>
           <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
             <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
             <button class="cdot" data-i="1" aria-label="Foto 2"></button>
             <button class="cdot" data-i="2" aria-label="Foto 3"></button>
@@ -1083,11 +1092,13 @@ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
 document.querySelectorAll('.shop-carousel').forEach(carousel=>{
   const imgs = carousel.querySelectorAll('.carousel-track img');
   const dots = carousel.querySelectorAll('.cdot');
+  const prevBtn = carousel.querySelector('.carousel-hint-prev');
   let idx = 0;
   function show(i){
     idx = (i + imgs.length) % imgs.length;
     imgs.forEach((img,n)=> img.classList.toggle('active', n===idx));
     dots.forEach((d,n)=> d.classList.toggle('active', n===idx));
+    if(prevBtn) prevBtn.hidden = (idx === 0);
   }
   dots.forEach(dot=>{
     dot.addEventListener('click', (e)=>{
@@ -1096,7 +1107,14 @@ document.querySelectorAll('.shop-carousel').forEach(carousel=>{
     });
   });
 
-  const hintBtn = carousel.querySelector('.carousel-hint');
+  if(prevBtn){
+    prevBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      show(idx - 1);
+    });
+  }
+
+  const hintBtn = carousel.querySelector('.carousel-hint:not(.carousel-hint-prev)');
   if(hintBtn){
     hintBtn.addEventListener('click', (e)=>{
       e.stopPropagation();
