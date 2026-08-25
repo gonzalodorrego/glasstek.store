@@ -662,7 +662,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
     <div class="shop-grid show-all reveal" id="shopGrid">
 
       <!-- ===== PRODUCTO EN STOCK 1 ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -704,7 +704,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 2 ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -742,7 +742,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 3 ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -778,7 +778,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4 — Puerta Ciega ===== -->
-      <article class="shop-card" data-type="stock-puertas">
+      <article class="shop-card sheet-managed" data-type="stock-puertas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Ciega</span>
@@ -812,7 +812,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4B — Puerta medio vidrio ===== -->
-      <article class="shop-card" data-type="stock-puertas">
+      <article class="shop-card sheet-managed" data-type="stock-puertas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Medio vidrio</span>
@@ -846,7 +846,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4C — Puertas un cuarto de vidrio ===== -->
-      <article class="shop-card" data-type="stock-puertas">
+      <article class="shop-card sheet-managed" data-type="stock-puertas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Un cuarto de vidrio</span>
@@ -880,7 +880,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4D — Puertas vidriadas totales ===== -->
-      <article class="shop-card" data-type="stock-puertas">
+      <article class="shop-card sheet-managed" data-type="stock-puertas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Vidriada total</span>
@@ -918,7 +918,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 4E — Puerta con paño fijo lateral ===== -->
-      <article class="shop-card" data-type="stock-puertas">
+      <article class="shop-card sheet-managed" data-type="stock-puertas">
         <div class="shop-img">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Con paño fijo lateral</span>
@@ -942,7 +942,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 5 ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -979,7 +979,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 6 ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -1013,7 +1013,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
       </article>
 
       <!-- ===== PRODUCTO EN STOCK 7 — Ventiluz (VISTA PREVIA, faltan datos y fotos reales) ===== -->
-      <article class="shop-card" data-type="stock-ventanas">
+      <article class="shop-card sheet-managed" data-type="stock-ventanas">
         <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <div class="carousel-track">
@@ -1190,6 +1190,7 @@ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
 }));
 
 /* Carrusel de fotos dentro de una tarjeta de producto */
+function initCarousels(){
 document.querySelectorAll('.shop-carousel').forEach(carousel=>{
   const track = carousel.querySelector('.carousel-track');
   const imgs = carousel.querySelectorAll('.carousel-track img');
@@ -1274,6 +1275,8 @@ document.querySelectorAll('.shop-carousel').forEach(carousel=>{
 
   render(false);
 });
+}
+initCarousels();
 
 /* Scroll reveal */
 const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
@@ -1303,32 +1306,39 @@ document.querySelectorAll('.shop-tab').forEach(tab=>{
 function toCamel(str){
   return str.replace(/-([a-z0-9])/g, (m,c)=>c.toUpperCase());
 }
-document.querySelectorAll('.stock-size').forEach(select=>{
+function renderStockPrice(select){
   const priceEl = select.closest('.shop-body').querySelector('.price-value');
-  const render = ()=>{
-    const raw = select.dataset[toCamel('price-'+select.value)];
-    if(raw){
-      priceEl.textContent = '$' + parseInt(raw,10).toLocaleString('es-AR');
-    }
-  };
-  select.addEventListener('change', render);
-  render();
-});
+  const opt = select.selectedOptions[0];
+  let raw = opt ? opt.dataset.price : undefined;
+  if(!raw){
+    raw = select.dataset[toCamel('price-'+select.value)];
+  }
+  if(raw){
+    priceEl.textContent = '$' + parseInt(raw,10).toLocaleString('es-AR');
+  }
+}
+function initStockPriceSelects(){
+  document.querySelectorAll('.stock-size').forEach(select=>{
+    select.addEventListener('change', ()=> renderStockPrice(select));
+    renderStockPrice(select);
+  });
+}
+initStockPriceSelects();
 
 // Botón "Comprar ahora" (productos en stock — Mercado Pago)
-document.querySelectorAll('.buy-now').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const card = btn.closest('.shop-card');
-    const select = card.querySelector('.stock-size');
-    const priceText = card.querySelector('.price-value').textContent;
-    const link = btn.dataset.mpLink;
-    if(!link || link.includes('TU-LINK-DE-PAGO')){
-      alert('Este producto todavía no tiene el link de pago de Mercado Pago configurado. Generalo desde tu cuenta de Mercado Pago (Cobrar → Crear link de pago) y pegalo en el atributo data-mp-link de este botón.');
-      return;
-    }
-    window.open(link, '_blank', 'noopener');
+function initBuyButtons(){
+  document.querySelectorAll('.buy-now').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const link = btn.dataset.mpLink;
+      if(!link || link.includes('TU-LINK-DE-PAGO')){
+        alert('Este producto todavía no tiene el link de pago de Mercado Pago configurado. Generalo desde tu cuenta de Mercado Pago (Cobrar → Crear link de pago) y pegalo en la columna mp_link de la planilla.');
+        return;
+      }
+      window.open(link, '_blank', 'noopener');
+    });
   });
-});
+}
+initBuyButtons();
 
 // Botón "Solicitar presupuesto" (productos a medida — WhatsApp con medidas)
 document.querySelectorAll('.quote-now').forEach(btn=>{
@@ -1346,6 +1356,145 @@ document.querySelectorAll('.quote-now').forEach(btn=>{
     window.open(url, '_blank', 'noopener');
   });
 });
+
+/* ===== TIENDA — CONEXIÓN CON GOOGLE SHEETS =====
+   Mientras carga (o si falla), quedan visibles las cards de arriba
+   como respaldo. Si la planilla carga bien, se reemplazan por las
+   que vienen de ahí. */
+const SHEET_PRODUCTOS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTPM-cxZj9H4Ne1LiEgihdOKIRc7ucicxMSuvFzmu-czjWhvAiGqi_cR7agD2CbB4BEB-EUhwsqmOM/pub?gid=238692451&single=true&output=csv';
+const SHEET_MEDIDAS_CSV   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTPM-cxZj9H4Ne1LiEgihdOKIRc7ucicxMSuvFzmu-czjWhvAiGqi_cR7agD2CbB4BEB-EUhwsqmOM/pub?gid=0&single=true&output=csv';
+
+function parseCSV(text){
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for(let i=0; i<text.length; i++){
+    const c = text[i];
+    if(inQuotes){
+      if(c === '"'){
+        if(text[i+1] === '"'){ field += '"'; i++; }
+        else { inQuotes = false; }
+      } else {
+        field += c;
+      }
+    } else {
+      if(c === '"'){ inQuotes = true; }
+      else if(c === ','){ row.push(field); field = ''; }
+      else if(c === '\r'){ /* ignorar */ }
+      else if(c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; }
+      else { field += c; }
+    }
+  }
+  if(field.length || row.length){ row.push(field); rows.push(row); }
+  return rows;
+}
+function csvToObjects(text){
+  const rows = parseCSV(text).filter(r => r.length && r.some(c => c.trim() !== ''));
+  if(!rows.length) return [];
+  const headers = rows[0].map(h => h.trim());
+  return rows.slice(1).map(r=>{
+    const obj = {};
+    headers.forEach((h, idx) => obj[h] = (r[idx] || '').trim());
+    return obj;
+  });
+}
+function escapeHtml(str){
+  return (str || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function parsePrecio(raw){
+  const cleaned = (raw || '0').replace(/[^\d.-]/g, '');
+  const n = parseFloat(cleaned);
+  return isNaN(n) ? 0 : Math.round(n);
+}
+
+function buildShopCardHTML(producto, medidas){
+  const images = [producto.imagen_principal, producto.imagen_detalle_1, producto.imagen_detalle_2, producto.imagen_detalle_3].filter(Boolean);
+  const selectId = 'size-' + producto.id_producto;
+
+  const medidaOptions = medidas.map((m, i)=>{
+    const val = (m.medida_valor || ('m'+i)).replace(/\s+/g,'').toLowerCase();
+    const price = parsePrecio(m.precio);
+    return `<option value="${escapeHtml(val)}" data-price="${price}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
+  }).join('');
+  const firstPrice = medidas.length ? parsePrecio(medidas[0].precio) : 0;
+
+  let imgBlock;
+  if(images.length > 1){
+    const trackImgs = images.map((src,i)=>
+      `<img src="${escapeHtml(src)}" alt="${escapeHtml(producto.nombre)}"${i===0 ? ' class="active"' : ''}${i>0 ? ' style="object-fit:contain;background:#f4f5f6;"' : ''}>`
+    ).join('');
+    const dots = images.map((_,i)=>
+      `<button class="cdot${i===0 ? ' active' : ''}" data-i="${i}" aria-label="Foto ${i+1}"></button>`
+    ).join('');
+    imgBlock = `<div class="shop-img shop-carousel">
+      <span class="shop-badge stock">En stock</span>
+      <div class="carousel-track">${trackImgs}</div>
+      <div class="carousel-dots">
+        <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
+        ${dots}
+        <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
+      </div>
+    </div>`;
+  } else {
+    imgBlock = `<div class="shop-img">
+      <span class="shop-badge stock">En stock</span>
+      <img src="${escapeHtml(images[0] || '')}" alt="${escapeHtml(producto.nombre)}">
+    </div>`;
+  }
+
+  return `<article class="shop-card sheet-managed" data-type="${escapeHtml(producto.categoria)}">
+    ${imgBlock}
+    <div class="shop-body">
+      <h3>${escapeHtml(producto.nombre)}</h3>
+      <p class="shop-desc">${escapeHtml(producto.descripcion)}</p>
+      <div class="shop-field">
+        <label for="${selectId}">Medida</label>
+        <select id="${selectId}" class="stock-size">${medidaOptions}</select>
+      </div>
+      <div class="shop-price"><span>Precio</span><span class="price-value">$${firstPrice.toLocaleString('es-AR')}</span></div>
+      <button class="btn btn-primary buy-now" data-product="${escapeHtml(producto.nombre)}" data-mp-link="${escapeHtml(producto.mp_link || '')}">Comprar ahora</button>
+      <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+    </div>
+  </article>`;
+}
+
+async function loadShopFromSheet(){
+  try{
+    const [prodText, medText] = await Promise.all([
+      fetch(SHEET_PRODUCTOS_CSV).then(r=>{ if(!r.ok) throw new Error('Productos: '+r.status); return r.text(); }),
+      fetch(SHEET_MEDIDAS_CSV).then(r=>{ if(!r.ok) throw new Error('Medidas: '+r.status); return r.text(); })
+    ]);
+    const productos = csvToObjects(prodText);
+    const medidas = csvToObjects(medText);
+
+    const medidasByProducto = {};
+    medidas.forEach(m=>{
+      if(!m.id_producto) return;
+      if(!medidasByProducto[m.id_producto]) medidasByProducto[m.id_producto] = [];
+      medidasByProducto[m.id_producto].push(m);
+    });
+
+    const activos = productos.filter(p => p.id_producto && /^(true|si|sí|1)$/i.test((p.activo || '').trim()));
+    if(!activos.length){ throw new Error('La planilla no devolvió productos activos.'); }
+
+    const html = activos.map(p => buildShopCardHTML(p, medidasByProducto[p.id_producto] || [])).join('');
+
+    const oldCards = shopGrid.querySelectorAll('.sheet-managed');
+    const anchor = shopGrid.querySelector('[data-type="quote"]');
+    oldCards.forEach(c => c.remove());
+    if(anchor){
+      anchor.insertAdjacentHTML('beforebegin', html);
+    } else {
+      shopGrid.insertAdjacentHTML('beforeend', html);
+    }
+
+    initCarousels();
+    initStockPriceSelects();
+    initBuyButtons();
+  } catch(err){
+    console.error('No se pudo cargar la planilla de precios; se muestran los productos por defecto.', err);
+  }
+}
+loadShopFromSheet();
 </script>
 </body>
 </html>
