@@ -1303,15 +1303,12 @@ document.querySelectorAll('.shop-tab').forEach(tab=>{
 });
 
 // Precio dinámico según medida elegida (productos en stock)
-function toCamel(str){
-  return str.replace(/-([a-z0-9])/g, (m,c)=>c.toUpperCase());
-}
 function renderStockPrice(select){
   const priceEl = select.closest('.shop-body').querySelector('.price-value');
   const opt = select.selectedOptions[0];
   let raw = opt ? opt.dataset.price : undefined;
   if(!raw){
-    raw = select.dataset[toCamel('price-'+select.value)];
+    raw = select.getAttribute('data-price-' + select.value);
   }
   if(raw){
     priceEl.textContent = '$' + parseInt(raw,10).toLocaleString('es-AR');
