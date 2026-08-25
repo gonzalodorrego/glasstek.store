@@ -299,6 +299,14 @@ nav a:hover::after{width:100%;}
 }
 .shop-tab.active{background:var(--black);color:#fff;border-color:var(--black);}
 .shop-tab:hover:not(.active){border-color:var(--black);}
+.shop-type-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.type-tab{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.03em;
+  padding:8px 12px;border:1px solid var(--line-dark);color:var(--graphite);background:transparent;
+  transition:all .3s var(--ease);
+}
+.type-tab.active{background:var(--black);color:#fff;border-color:var(--black);}
+.type-tab:hover:not(.active){border-color:var(--black);}
 
 .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
 .shop-card{background:var(--white);display:flex;flex-direction:column;transition:box-shadow .4s var(--ease);}
@@ -1454,6 +1462,107 @@ function buildShopCardHTML(producto, medidas){
   </article>`;
 }
 
+function buildVentiluzCardHTML(producto, medidas){
+  const images = [producto.imagen_principal, producto.imagen_detalle_1, producto.imagen_detalle_2, producto.imagen_detalle_3].filter(Boolean);
+  const selectId = 'size-' + producto.id_producto;
+
+  // Agrupar medidas por tipo, respetando el orden en que aparecen en la planilla
+  const tipos = [];
+  const porTipo = {};
+  medidas.forEach(m=>{
+    const tipo = (m.tipo || '').trim();
+    if(!tipo) return;
+    if(!porTipo[tipo]){ porTipo[tipo] = []; tipos.push(tipo); }
+    porTipo[tipo].push(m);
+  });
+
+  // A qué foto del carrusel salta cada tipo. Ajustar estos índices si
+  // cambia el orden de las fotos en la planilla (imagen_principal=0,
+  // imagen_detalle_1=1, imagen_detalle_2=2, imagen_detalle_3=3).
+  const TIPO_IMG = { 'Corrediza': 3, 'Banderola': 1, 'Batiente': 2 };
+
+  function opcionesDe(tipo){
+    return (porTipo[tipo] || []).map((m,j)=>{
+      const val = (m.medida_valor || ('m'+j)).replace(/\s+/g,'').toLowerCase();
+      const price = parsePrecio(m.precio);
+      return `<option value="${escapeHtml(val)}" data-price="${price}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
+    }).join('');
+  }
+
+  const tabsHtml = tipos.map((tipo, i)=>{
+    const imgIdx = Math.min(TIPO_IMG[tipo] ?? 0, Math.max(images.length - 1, 0));
+    return `<button type="button" class="type-tab${i===0 ? ' active' : ''}" data-tipo="${escapeHtml(tipo)}" data-image-index="${imgIdx}" data-options="${escapeHtml(opcionesDe(tipo))}">Ventana ${escapeHtml(tipo.toLowerCase())}</button>`;
+  }).join('');
+
+  const firstTipo = tipos[0];
+  const firstOptions = firstTipo ? opcionesDe(firstTipo) : '';
+  const firstPrice = firstTipo && porTipo[firstTipo][0] ? parsePrecio(porTipo[firstTipo][0].precio) : 0;
+
+  const trackImgs = images.map((src,i)=>
+    `<img src="${escapeHtml(src)}" alt="${escapeHtml(producto.nombre)}"${i===0 ? ' class="active"' : ''}${i>0 ? ' style="object-fit:contain;background:#f4f5f6;"' : ''}>`
+  ).join('');
+  const dots = images.map((_,i)=>
+    `<button class="cdot${i===0 ? ' active' : ''}" data-i="${i}" aria-label="Foto ${i+1}"></button>`
+  ).join('');
+
+  return `<article class="shop-card sheet-managed" data-type="${escapeHtml(producto.categoria)}">
+    <div class="shop-img shop-carousel">
+      <span class="shop-badge stock">En stock</span>
+      <div class="carousel-track">${trackImgs}</div>
+      <div class="carousel-dots">
+        <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
+        ${dots}
+        <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
+      </div>
+    </div>
+    <div class="shop-body">
+      <h3>${escapeHtml(producto.nombre)}</h3>
+      <p class="shop-desc">${escapeHtml(producto.descripcion)}</p>
+      <div class="shop-field">
+        <label>Tipo</label>
+        <div class="shop-type-tabs">${tabsHtml}</div>
+      </div>
+      <div class="shop-field">
+        <label for="${selectId}">Medida</label>
+        <select id="${selectId}" class="stock-size">${firstOptions}</select>
+      </div>
+      <div class="shop-price"><span>Precio</span><span class="price-value">$${firstPrice.toLocaleString('es-AR')}</span></div>
+      <button class="btn btn-primary buy-now" data-product="${escapeHtml(producto.nombre)}" data-mp-link="${escapeHtml(producto.mp_link || '')}">Comprar ahora</button>
+      <p class="shop-note">Pago seguro con Mercado Pago. Envío o retiro en planta a coordinar.</p>
+    </div>
+  </article>`;
+}
+
+function buildCardHTMLForProducto(producto, medidas){
+  const tieneTipos = medidas.some(m => (m.tipo || '').trim() !== '');
+  return tieneTipos ? buildVentiluzCardHTML(producto, medidas) : buildShopCardHTML(producto, medidas);
+}
+
+// Botones de "Tipo" dentro de una card (hoy: Ventiluz) — al elegir un
+// tipo, se cambian las opciones de medida y se salta a la foto de ese tipo.
+function initTypeTabs(){
+  document.querySelectorAll('.shop-type-tabs').forEach(tabsWrap=>{
+    const card = tabsWrap.closest('.shop-card');
+    const select = card.querySelector('.stock-size');
+    const carousel = card.querySelector('.shop-carousel');
+    const tabs = tabsWrap.querySelectorAll('.type-tab');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        select.innerHTML = tab.dataset.options || '';
+        renderStockPrice(select);
+        const imgIdx = parseInt(tab.dataset.imageIndex, 10);
+        if(carousel && !isNaN(imgIdx)){
+          const dot = carousel.querySelectorAll('.cdot')[imgIdx];
+          if(dot) dot.click();
+        }
+      });
+    });
+  });
+}
+initTypeTabs();
+
 async function loadShopFromSheet(){
   try{
     const [prodText, medText] = await Promise.all([
@@ -1473,7 +1582,7 @@ async function loadShopFromSheet(){
     const activos = productos.filter(p => p.id_producto && /^(true|si|sí|1)$/i.test((p.activo || '').trim()));
     if(!activos.length){ throw new Error('La planilla no devolvió productos activos.'); }
 
-    const html = activos.map(p => buildShopCardHTML(p, medidasByProducto[p.id_producto] || [])).join('');
+    const html = activos.map(p => buildCardHTMLForProducto(p, medidasByProducto[p.id_producto] || [])).join('');
 
     const oldCards = shopGrid.querySelectorAll('.sheet-managed');
     const anchor = shopGrid.querySelector('[data-type="quote"]');
@@ -1487,6 +1596,7 @@ async function loadShopFromSheet(){
     initCarousels();
     initStockPriceSelects();
     initBuyButtons();
+    initTypeTabs();
   } catch(err){
     console.error('No se pudo cargar la planilla de precios; se muestran los productos por defecto.', err);
   }
