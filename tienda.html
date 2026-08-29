@@ -927,10 +927,23 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
 
       <!-- ===== PRODUCTO EN STOCK 4E — Puerta con paño fijo lateral ===== -->
       <article class="shop-card sheet-managed" data-type="stock-puertas">
-        <div class="shop-img">
+        <div class="shop-img shop-carousel">
           <span class="shop-badge stock">En stock</span>
           <span class="ltag">Con paño fijo lateral</span>
-          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?q=80&w=900&auto=format&fit=crop" alt="Puerta con paño fijo lateral de aluminio línea Módena en stock">
+          <div class="carousel-track">
+            <img src="puerta-panofijolateral-modena.jpg" alt="Puerta con paño fijo lateral de aluminio negro línea Módena instalada en fachada" class="active">
+            <img src="puerta-panofijolateral-detalle1.jpg" alt="Puerta con paño fijo lateral línea Módena en negro, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+            <img src="puerta-panofijolateral-detalle2.jpg" alt="Puerta con paño fijo lateral línea Módena en blanco, foto de producto completa" style="object-fit:contain;background:#f4f5f6;">
+            <img src="puerta-panofijolateral-detalle3.jpg" alt="Puerta con paños fijos laterales a ambos lados, línea Módena en negro" style="object-fit:contain;background:#f4f5f6;">
+          </div>
+          <div class="carousel-dots">
+            <button class="carousel-hint carousel-hint-prev" aria-label="Ver foto anterior" hidden></button>
+            <button class="cdot active" data-i="0" aria-label="Foto 1"></button>
+            <button class="cdot" data-i="1" aria-label="Foto 2"></button>
+            <button class="cdot" data-i="2" aria-label="Foto 3"></button>
+            <button class="cdot" data-i="3" aria-label="Foto 4"></button>
+            <button class="carousel-hint" aria-label="Ver siguiente foto"></button>
+          </div>
         </div>
         <div class="shop-body">
           <h3>Puertas con paño fijo lateral — Línea Módena</h3>
@@ -1462,6 +1475,21 @@ function buildShopCardHTML(producto, medidas){
   </article>`;
 }
 
+// Si la planilla no tiene columna "tipo", pero el texto de la medida viene
+// como "0,60 x 0,40 m - Corrediza", separamos el tipo de ahí igual.
+function tipoYEtiqueta(m){
+  let tipo = (m.tipo || '').trim();
+  let label = (m.medida_label || m.medida_valor || '').trim();
+  if(!tipo){
+    const match = label.match(/^(.*?)\s*-\s*([^-]+)$/);
+    if(match){
+      label = match[1].trim();
+      tipo = match[2].trim();
+    }
+  }
+  return { tipo, label };
+}
+
 function buildVentiluzCardHTML(producto, medidas){
   const images = [producto.imagen_principal, producto.imagen_detalle_1, producto.imagen_detalle_2, producto.imagen_detalle_3].filter(Boolean);
   const selectId = 'size-' + producto.id_producto;
@@ -1470,10 +1498,10 @@ function buildVentiluzCardHTML(producto, medidas){
   const tipos = [];
   const porTipo = {};
   medidas.forEach(m=>{
-    const tipo = (m.tipo || '').trim();
+    const { tipo, label } = tipoYEtiqueta(m);
     if(!tipo) return;
     if(!porTipo[tipo]){ porTipo[tipo] = []; tipos.push(tipo); }
-    porTipo[tipo].push(m);
+    porTipo[tipo].push({ ...m, medida_label: label });
   });
 
   // A qué foto del carrusel salta cada tipo. Ajustar estos índices si
@@ -1534,7 +1562,7 @@ function buildVentiluzCardHTML(producto, medidas){
 }
 
 function buildCardHTMLForProducto(producto, medidas){
-  const tieneTipos = medidas.some(m => (m.tipo || '').trim() !== '');
+  const tieneTipos = medidas.some(m => tipoYEtiqueta(m).tipo !== '');
   return tieneTipos ? buildVentiluzCardHTML(producto, medidas) : buildShopCardHTML(producto, medidas);
 }
 
