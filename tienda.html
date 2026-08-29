@@ -1379,16 +1379,17 @@ initStockPriceSelects();
 function initBuyButtons(){
   document.querySelectorAll('.buy-now').forEach(btn=>{
     btn.addEventListener('click', ()=>{
-      const link = btn.dataset.mpLink;
+      const card = btn.closest('.shop-card');
+      const select = card ? card.querySelector('.stock-size') : null;
+      const opt = select ? select.selectedOptions[0] : null;
+      const link = (opt && opt.dataset.mpLink) ? opt.dataset.mpLink : btn.dataset.mpLink;
       if(link && !link.includes('TU-LINK-DE-PAGO')){
         window.open(link, '_blank', 'noopener');
         return;
       }
       // Todavía sin link de Mercado Pago configurado: derivamos a WhatsApp con el modelo y la medida elegida.
-      const card = btn.closest('.shop-card');
       const producto = btn.dataset.product;
-      const select = card ? card.querySelector('.stock-size') : null;
-      const medida = select && select.selectedOptions[0] ? select.selectedOptions[0].textContent.trim() : '';
+      const medida = opt ? opt.textContent.trim() : '';
       const precio = card ? (card.querySelector('.price-value') || {}).textContent : '';
       let texto = `Hola, quiero comprar: ${producto}.`;
       if(medida) texto += ` Medida: ${medida}.`;
@@ -1473,7 +1474,7 @@ function buildShopCardHTML(producto, medidas){
   const medidaOptions = medidas.map((m, i)=>{
     const val = (m.medida_valor || ('m'+i)).replace(/\s+/g,'').toLowerCase();
     const price = parsePrecio(m.precio);
-    return `<option value="${escapeHtml(val)}" data-price="${price}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
+    return `<option value="${escapeHtml(val)}" data-price="${price}" data-mp-link="${escapeHtml(m.mp_link || '')}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
   }).join('');
   const firstPrice = medidas.length ? parsePrecio(medidas[0].precio) : 0;
 
@@ -1555,7 +1556,7 @@ function buildVentiluzCardHTML(producto, medidas){
     return (porTipo[tipo] || []).map((m,j)=>{
       const val = (m.medida_valor || ('m'+j)).replace(/\s+/g,'').toLowerCase();
       const price = parsePrecio(m.precio);
-      return `<option value="${escapeHtml(val)}" data-price="${price}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
+      return `<option value="${escapeHtml(val)}" data-price="${price}" data-mp-link="${escapeHtml(m.mp_link || '')}">${escapeHtml(m.medida_label || m.medida_valor)}</option>`;
     }).join('');
   }
 
