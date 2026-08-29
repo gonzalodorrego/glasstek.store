@@ -1187,7 +1187,7 @@ footer{background:#0d0e10;color:#8b9199;padding:70px 0 30px;border-top:1px solid
         <h5>Contacto</h5>
         <ul>
           <li>+54 9 11 6967-0130</li>
-          <li>info@glasstek.com.ar</li>
+          <li>glasstek.ar@gmail.com</li>
           <li>Parque Industrial, Luján, Buenos Aires</li>
         </ul>
       </div>
@@ -1380,11 +1380,21 @@ function initBuyButtons(){
   document.querySelectorAll('.buy-now').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const link = btn.dataset.mpLink;
-      if(!link || link.includes('TU-LINK-DE-PAGO')){
-        alert('Este producto todavía no tiene el link de pago de Mercado Pago configurado. Generalo desde tu cuenta de Mercado Pago (Cobrar → Crear link de pago) y pegalo en la columna mp_link de la planilla.');
+      if(link && !link.includes('TU-LINK-DE-PAGO')){
+        window.open(link, '_blank', 'noopener');
         return;
       }
-      window.open(link, '_blank', 'noopener');
+      // Todavía sin link de Mercado Pago configurado: derivamos a WhatsApp con el modelo y la medida elegida.
+      const card = btn.closest('.shop-card');
+      const producto = btn.dataset.product;
+      const select = card ? card.querySelector('.stock-size') : null;
+      const medida = select && select.selectedOptions[0] ? select.selectedOptions[0].textContent.trim() : '';
+      const precio = card ? (card.querySelector('.price-value') || {}).textContent : '';
+      let texto = `Hola, quiero comprar: ${producto}.`;
+      if(medida) texto += ` Medida: ${medida}.`;
+      if(precio) texto += ` Precio: ${precio}.`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank', 'noopener');
     });
   });
 }
